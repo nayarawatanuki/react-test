@@ -19,9 +19,9 @@ import {getFact} from '../../services/catFacts'
 
 export const Form1 = () => {
 
-    const [currentFact, setCurrentFact] = useState([])
+    const [currentFact, setCurrentFact] = useState<String>()
 
-    const [factList, setFactList] = useState([])
+    const [factList, setFactList] = useState<String[]>([])
 
     const lengthFact = useRef<HTMLInputElement>(null)
     const fact = async () => {
@@ -29,8 +29,14 @@ export const Form1 = () => {
             const {data, ...rest} = await getFact({max_length: lengthFact?.current?.value})
             setCurrentFact(data.fact)
 
+            if(factList.includes(data.fact)) {
+                console.log('fato já incluido')
+                return
+            }
+
             const newFactList: any = [...factList, data.fact]
             setFactList(newFactList)
+            
 
             console.log("Data: ", {data, rest})
             console.log("FactList: ", factList)

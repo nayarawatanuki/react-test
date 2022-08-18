@@ -38,7 +38,7 @@ const Home: NextPage = () => {
                   Bem-vindo(a)!
                 </Text>
                 <Link
-                  color="teal.500"
+                  color="telegram.400"
                   href="/page1"
                   fontSize="2xl"
                   target="_blank"
@@ -58,9 +58,9 @@ const Home: NextPage = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          CatFact Project by {'nayarawatanuki'}
           <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+            <Image src="" alt="" width={72} height={16} />
           </span>
         </a>
       </footer>

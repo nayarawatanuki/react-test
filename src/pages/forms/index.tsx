@@ -3,11 +3,11 @@ import * as React from "react"
 
 import Head from 'next/head'
 import Image from 'next/image'
-import { TabsOption } from "../components/tabs"
-import styles from '../styles/Home.module.css'
+import { TabsOption } from "../../components/tabs"
+import styles from '../../styles/Home.module.css'
 import { Heading } from '@chakra-ui/react'
 
-const Page1: NextPage = () => {
+const Forms: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
@@ -29,9 +29,9 @@ const Page1: NextPage = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          CatFact Project by {'nayarawatanuki'}
           <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+            <Image src="" alt="" width={72} height={16} />
           </span>
         </a>
       </footer>
@@ -39,4 +39,4 @@ const Page1: NextPage = () => {
   )
 }
 
-export default Page1
+export default Forms
