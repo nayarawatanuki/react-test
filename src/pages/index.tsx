@@ -15,6 +15,7 @@ import {
   Code,
   Grid,
   theme,
+  Heading,
 } from "@chakra-ui/react"
 import { ColorModeSwitcher } from "./ColorModeSwitcher"
 
@@ -29,22 +30,26 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <ChakraProvider theme={theme}>
+          <Box alignSelf="flex-end">
+            <ColorModeSwitcher />
+          </Box>
+
           <Box textAlign="center" fontSize="xl">
+            <Heading as='h2' size='3xl' noOfLines={1}>
+              Bem-vindo(a)!
+            </Heading>
+
             <Grid minH="100vh" p={3}>
-              <ColorModeSwitcher justifySelf="flex-end" />
+              <Text as="sub">Clique no link abaixo para visualizar os formulários:</Text>
               <VStack spacing={8}>
-                
-                <Text>
-                  Bem-vindo(a)!
-                </Text>
                 <Link
                   color="telegram.400"
-                  href="/page1"
-                  fontSize="2xl"
+                  href="/forms"
+                  fontSize="4xl"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Forms
+                  Formulários
                 </Link>
               </VStack>
             </Grid>
@@ -54,7 +59,7 @@ const Home: NextPage = () => {
 
       <footer className={styles.footer}>
         <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          href="https://github.com/nayarawatanuki"
           target="_blank"
           rel="noopener noreferrer"
         >
