@@ -9,31 +9,36 @@ import {
     NumberDecrementStepper,
     Button,
     Stack,
-    Box
+    Text,
+    Box,
+    OrderedList,
+    ListItem
 } from '@chakra-ui/react'
 
-import {getFact} from '../../services/catFact'
-
-var header = {
-    title: "Gerar nova cotação de seguro",
-    subtitle: "Realizar um novo orçamento ou cotação.",
-};
+import {getFact} from '../../services/catFacts'
 
 export const Form1 = () => {
 
-    const [viewFact, setViewFact] = useState([])
+    const [currentFact, setCurrentFact] = useState([])
+
+    const [factList, setFactList] = useState([])
 
     const lengthFact = useRef<HTMLInputElement>(null)
     const fact = async () => {
         try{
             const {data, ...rest} = await getFact({max_length: lengthFact?.current?.value})
-            setViewFact(data.fact)
-            console.log("Fact: ", {data, rest})
-            console.log("Length Fact: ", lengthFact?.current?.value)
+            setCurrentFact(data.fact)
+
+            const newFactList: any = [...factList, data.fact]
+            setFactList(newFactList)
+
+            console.log("Data: ", {data, rest})
+            console.log("FactList: ", factList)
+            console.log("Fact: ", data)
+            console.log("Length FactList: ", lengthFact?.current?.value)
         }catch(error) {
             console.error(error)
         }
-        
         
     }
 
@@ -42,7 +47,7 @@ export const Form1 = () => {
         <Stack spacing={4} direction='row' align='center'>
             <div style={{paddingRight: 30, paddingLeft: 40}}>
                 <FormLabel width={60}>Tamanho do fato:</FormLabel>
-                <NumberInput min={20} >
+                <NumberInput defaultValue={20} min={20} >
                     <NumberInputField ref={lengthFact}/>
                     <NumberInputStepper>
                     <NumberIncrementStepper />
@@ -65,33 +70,27 @@ export const Form1 = () => {
             </div>
         </Stack>
 
-        <Box marginTop={10}
-            
-            overflow="clip"
-            maxHeight="200px"
-            
-            height="20%"
-            whiteSpace="nowrap"
-            color="black"
-            px="20px"
-            sx={{
-                "&::-webkit-scrollbar": {
-                    width: "4px",
-                },
-                "&::-webkit-scrollbar-track": {
-                    width: "6px",
-                },
-                "&::-webkit-scrollbar-thumb": {
-                    background: "#08c0e1",
-                    borderRadius: "24px",
-
-                
-                },
-            }}
+        <Stack 
+            paddingLeft={10} 
+            marginTop={10}
+            direction='column'
         >
-            {viewFact}
-            
-        </Box>
+            <OrderedList margin={0}>
+                {factList.map((fact, index) => (
+                    <Box p={5} marginLeft={0} marginBottom={3} shadow='md' borderWidth='1px' key={index}>
+                        
+                        <ListItem marginLeft={4}>
+                            {/*<Heading fontSize='xl'>teste</Heading>*/}
+                            <Text mt={4}>{fact}</Text>
+                        </ListItem>
+                        
+                    </Box>
+                ))}
+                    
+                </OrderedList>
+        </Stack>
+
+        
     </FormControl>
 
 )

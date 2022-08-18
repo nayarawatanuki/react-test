@@ -9,29 +9,28 @@ import {
     NumberDecrementStepper,
     Button,
     Stack,
-    Box
+    Box,
+    Text,
+    OrderedList,
+    ListItem
 } from '@chakra-ui/react'
 
 import {getFacts} from '../../services/catFacts'
-
-/*var header = {
-    title: "Gerar nova cotação de seguro",
-    subtitle: "Realizar um novo orçamento ou cotação.",
-};*/
 
 export const Form2 = () => {
 
     const [viewFacts, setViewFacts] = useState([])
 
     const lengthFacts = useRef<HTMLInputElement>(null)
-    const totalFacts = useRef<HTMLInputElement>(null)
+    const limitFacts = useRef<HTMLInputElement>(null)
     const facts = async () => {
         try{
-            const {data, ...rest} = await getFacts({max_length: lengthFacts?.current?.value, max_total: totalFacts?.current?.value})
-            setViewFacts(data.facts)
-            console.log("Facts: ", {data, rest})
+            const {data, ...rest} = await getFacts({max_length: lengthFacts?.current?.value, limit: limitFacts?.current?.value})
+            setViewFacts(data?.data.map((item: any) => item.fact))
+            console.log("Data: ", {data, rest})
+            console.log("Facts: ", data?.data)
             console.log("Length Facts: ", lengthFacts?.current?.value)
-            console.log("Total Facts: ", totalFacts?.current?.value)
+            console.log("Total Facts: ", limitFacts?.current?.value)
         }catch(error) {
             console.error(error)
         }
@@ -44,7 +43,7 @@ return (
         <Stack spacing={4} direction='row' align='center'>
             <div style={{paddingRight: 30, paddingLeft: 40}}>
                 <FormLabel width={60}>Tamanho do fato:</FormLabel>
-                <NumberInput min={20} >
+                <NumberInput defaultValue={20} min={20} >
                     <NumberInputField ref={lengthFacts} />
                     <NumberInputStepper>
                     <NumberIncrementStepper />
@@ -55,8 +54,8 @@ return (
 
             <div style={{ paddingLeft: 20}}>
                 <FormLabel width={60}>Quantidade de fatos:</FormLabel>
-                <NumberInput min={1}>
-                    <NumberInputField ref={totalFacts}/>
+                <NumberInput defaultValue={1} min={1}>
+                    <NumberInputField ref={limitFacts}/>
                     <NumberInputStepper>
                     <NumberIncrementStepper />
                     <NumberDecrementStepper />
@@ -78,16 +77,17 @@ return (
                 onClick={facts}
             >
                 Buscar
-            </Button>
-
-            <Box
+            </Button>            
+            
+            
+            <Stack 
+                direction='column'
                 overflow="scroll"
                 maxHeight="200px"
                 
                 height="20%"
                 whiteSpace="nowrap"
                 color="black"
-                px="20px"
                 sx={{
                     "&::-webkit-scrollbar": {
                         width: "4px",
@@ -103,8 +103,21 @@ return (
                     },
                 }}
             >
-                {viewFacts}
-            </Box>
+                <OrderedList margin={0}>
+                    {viewFacts.map((item: any, index) => (
+                        <Box p={5} marginLeft={0} marginBottom={3} shadow='md' borderWidth='1px' key={index}>
+                            
+                            <ListItem marginLeft={4}>
+                                <Text mt={4}>{item}</Text>
+                            </ListItem>
+                            
+                        </Box>
+                    ))}
+                    
+                </OrderedList>
+
+                
+            </Stack>
         </Stack>
 
         

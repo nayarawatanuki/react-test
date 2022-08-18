@@ -8,7 +8,7 @@ var header = {
 };
 
 export const TabsOption = () => (
-    <Tabs isFitted variant='enclosed'>
+    <Tabs isFitted variant='enclosed-colored'colorScheme='telegram' marginTop={10}>
     <TabList mb='1em'>
         <Tab>Lista 1</Tab>
         <Tab>Lista 2</Tab>

@@ -5,6 +5,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { TabsOption } from "../components/tabs"
 import styles from '../styles/Home.module.css'
+import { Heading } from '@chakra-ui/react'
 
 const Page1: NextPage = () => {
   return (
@@ -16,6 +17,9 @@ const Page1: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
+        <Heading as='h2' size='3xl' noOfLines={1}>
+          Formulários
+        </Heading>
         <TabsOption />
       </main>
 
