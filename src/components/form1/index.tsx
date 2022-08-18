@@ -44,9 +44,9 @@ export const Form1 = () => {
 
     return(
     <FormControl>
-        <Stack spacing={4} direction='row' align='center'>
-            <div style={{paddingRight: 30, paddingLeft: 40}}>
-                <FormLabel width={60}>Tamanho do fato:</FormLabel>
+        <Stack direction='row' align='center' paddingLeft={38} paddingRight={38}>
+            <div style={{width: "full"}}>
+                <FormLabel width={32}>Tamanho do fato:</FormLabel>
                 <NumberInput defaultValue={20} min={20} >
                     <NumberInputField ref={lengthFact}/>
                     <NumberInputStepper>
@@ -56,10 +56,10 @@ export const Form1 = () => {
                 </NumberInput>
             </div>
 
-            <div style={{margin: 0}}>
+            <div style={{margin: 0, paddingLeft: 10}}>
                 <Button
                     mt={8}
-                    width={60}
+                    width="full"
                     colorScheme='telegram'
                     //isLoading={props.isSubmitting}
                     type='submit'
@@ -71,6 +71,7 @@ export const Form1 = () => {
         </Stack>
 
         <Stack 
+            paddingRight={38}
             paddingLeft={10} 
             marginTop={10}
             direction='column'

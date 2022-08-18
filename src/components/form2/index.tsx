@@ -40,9 +40,9 @@ export const Form2 = () => {
 
 return (
     <FormControl>
-        <Stack spacing={4} direction='row' align='center'>
-            <div style={{paddingRight: 30, paddingLeft: 40}}>
-                <FormLabel width={60}>Tamanho do fato:</FormLabel>
+        <Stack direction='row' align='center' paddingLeft={38} paddingRight={38}>
+            <div style={{ width: "full" }}>
+                <FormLabel>Tamanho do fato:</FormLabel>
                 <NumberInput defaultValue={20} min={20} >
                     <NumberInputField ref={lengthFacts} />
                     <NumberInputStepper>
@@ -52,8 +52,8 @@ return (
                 </NumberInput>
             </div>
 
-            <div style={{ paddingLeft: 20}}>
-                <FormLabel width={60}>Quantidade de fatos:</FormLabel>
+            <div style={{ paddingLeft: 20 }}>
+                <FormLabel>Quantidade de fatos:</FormLabel>
                 <NumberInput defaultValue={1} min={1}>
                     <NumberInputField ref={limitFacts}/>
                     <NumberInputStepper>
@@ -64,11 +64,11 @@ return (
             </div>
         </Stack>
 
-        <Stack justifyContent="center" paddingLeft={10}>
+        <Stack justifyContent="center" paddingLeft={10} paddingRight={38}>
             <Button
                 mt={8}
                 mb={10}
-                width="xl"
+                width="full"
                 size="lg"
                 justifyContent="space-evenly"
                 colorScheme='telegram'
