@@ -12,10 +12,14 @@ import {
     Text,
     Box,
     OrderedList,
-    ListItem
+    ListItem,
+    Wrap,
+    WrapItem,
+    useToast
 } from '@chakra-ui/react'
 
 import {getFact} from '../../services/catFacts'
+import {ToastStatus} from '../toast'
 
 export const Form1 = () => {
 
@@ -24,6 +28,8 @@ export const Form1 = () => {
     const [factList, setFactList] = useState<String[]>([])
 
     const lengthFact = useRef<HTMLInputElement>(null)
+
+    const toast = useToast()
     const fact = async () => {
         try{
             const {data, ...rest} = await getFact({max_length: lengthFact?.current?.value})
@@ -31,7 +37,22 @@ export const Form1 = () => {
 
             if(factList.includes(data.fact)) {
                 console.log('fato já incluido')
-                return
+                return (
+                    <Wrap>
+                        <WrapItem >
+                            {toast({
+                                title: "Fato já incluido!",
+                                description: "Favor escolher um tamanho diferente.",
+                                status: "warning",
+                                variant: "left-accent",
+                                position: "top",
+                                duration: 6000,
+                                isClosable: true,
+                            })}
+                        </WrapItem>
+                    </Wrap>
+                    
+                )
             }
 
             const newFactList: any = [...factList, data.fact]
