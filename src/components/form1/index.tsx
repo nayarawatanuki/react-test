@@ -19,7 +19,6 @@ import {
 } from '@chakra-ui/react'
 
 import {getFact} from '../../services/catFacts'
-import {ToastStatus} from '../toast'
 
 export const Form1 = () => {
 
