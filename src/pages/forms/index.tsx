@@ -31,7 +31,7 @@ const Forms: NextPage = () => {
         >
           CatFact Project by {'nayarawatanuki'}
           <span className={styles.logo}>
-            <Image src="" alt="" width={72} height={16} />
+            
           </span>
         </a>
       </footer>
