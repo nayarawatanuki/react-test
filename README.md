@@ -1,5 +1,5 @@
-# Projeto CatFact
-realizado por nayarawatanuki
+# Projeto CatFact 
+*realizado por nayarawatanuki*
 
 
 O projeto contém 2 tipos de listas sobre fatos de gatos:
