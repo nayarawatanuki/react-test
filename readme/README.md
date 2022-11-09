@@ -2,10 +2,8 @@
 *realizado por nayarawatanuki*
 
 
-**O projeto contém 2 tipos de listas sobre fatos de gatos:**
-<br />
+O projeto contém 2 tipos de listas sobre fatos de gatos:
     1ª) Usuário busca fato por fato para compor uma listagem.
-<br />
     2ª) Usário busca uma listagem pronta de fatos com um scroll infinito para auxilio da visualização.
 
 Ambas as listas foram tratadas com inputs apropriados e tratamento de erro.
