@@ -17,7 +17,7 @@ import {
   theme,
   Heading,
 } from "@chakra-ui/react"
-import  ColorModeSwitcher  from "./ColorModeSwitcher"
+import  ColorModeSwitcher  from "./src/pages/ColorModeSwitcher"
 
 const Home: NextPage = () => {
   return (
